@@ -23,13 +23,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Auth:Secret"]))
         };
-
         options.Events = new JwtBearerEvents {
             OnAuthenticationFailed = context => {
                 return Task.CompletedTask;
             }
         };
     });
+/* ============================================ */
 
 builder.Services.AddCors(options => {
     options.AddPolicy(name: "mycors",
